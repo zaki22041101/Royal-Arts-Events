@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Arts Events | Agence de marketing et d'événements</title>
+    <meta name="description" content="Royal Arts Events est une agence de marketing et d'événements qui crée des expériences élégantes et mémorables.">
+    <meta name="theme-color" content="#b8923a">
+
+    <!-- Favicon (logo.png must be in the same folder as this page) -->
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+
+    <!-- Fonts (fallbacks are Georgia / Arial if offline) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* =====================================================
+           ROYAL ARTS EVENTS: white, gold and grey
+           Change the colors here and the whole site follows.
+           ===================================================== */
+        :root {
+            --gold:        #b8923a;
+            --gold-light:  #d9b968;
+            --gold-dark:   #8a6a1f;
+            --white:       #ffffff;
+            --grey-50:     #f7f7f5;
+            --grey-100:    #ecece9;
+            --grey-300:    #c9c9c5;
+            --grey-600:    #66665f;
+            --grey-800:    #2b2b29;
+
+            --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            --sans:  'Montserrat', Arial, Helvetica, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: var(--sans);
+            color: var(--grey-800);
+            background: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        img { max-width: 100%; display: block; }
+        a { color: inherit; }
+
+        a:focus-visible,
+        .btn:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 3px;
+        }
+
+        section { padding: 100px 8%; }
+
+        /* ---------- Section headings ---------- */
+        .eyebrow {
+            display: block;
+            font-size: 0.8rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .section-head { text-align: center; max-width: 640px; margin: 0 auto 60px; }
+        .section-head h2 {
+            font-family: var(--serif);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--grey-800);
+        }
+        .section-head p { margin-top: 16px; color: var(--grey-600); }
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            margin-top: 18px;
+        }
+        .divider::before,
+        .divider::after {
+            content: "";
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+        }
+        .divider span {
+            width: 8px; height: 8px;
+            background: var(--gold);
+            transform: rotate(45deg);
+        }
+
+        /* ---------- Buttons ---------- */
+        .btn {
+            display: inline-block;
+            padding: 14px 34px;
+            font-family: var(--sans);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 1px solid var(--gold-dark);
+            background: var(--gold-dark);
+            color: var(--white);
+            transition: 0.3s;
+        }
+        .btn:hover { background: transparent; color: var(--gold-dark); }
+        .btn.outline { background: transparent; color: var(--gold-dark); }
+        .btn.outline:hover { background: var(--gold-dark); color: var(--white); }
+
+        /* =====================================================
+           HEADER
+           ===================================================== */
+        header {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 8%;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--grey-100);
+        }
+        .logo { display: flex; align-items: center; text-decoration: none; }
+        .logo img { height: 60px; width: auto; }
+
+        nav { display: flex; align-items: center; gap: 36px; }
+        nav a {
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--grey-800);
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.3s;
+        }
+        nav a:hover { color: var(--gold-dark); border-bottom-color: var(--gold); }
+        nav .nav-cta {
+            padding: 10px 22px;
+            border: 1px solid var(--gold-dark);
+            color: var(--gold-dark);
+        }
+        nav .nav-cta:hover { background: var(--gold-dark); color: var(--white); }
+
+        /* =====================================================
+           HOME
+           ===================================================== */
+        .home {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 140px;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(217, 185, 104, 0.18), transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(184, 146, 58, 0.14), transparent 40%),
+                linear-gradient(180deg, var(--white) 0%, var(--grey-50) 100%);
+            position: relative;
+        }
+        .home::before {                 /* thin gold frame */
+            content: "";
+            position: absolute;
+            inset: 96px 4% 40px;
+            border: 1px solid var(--gold-light);
+            pointer-events: none;
+        }
+        .home .hero-logo { height: 170px; width: auto; margin-bottom: 10px; }
+        .home h1 {
+            font-family: var(--serif);
+            font-size: clamp(2.6rem, 7vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: 0.02em;
+        }
+        .home h1 em {
+            font-style: normal;
+            color: var(--gold);
+        }
+        .home .tagline {
+            max-width: 620px;
+            margin: 24px auto 38px;
+            font-size: 1.05rem;
+            color: var(--grey-600);
+        }
+        .home .actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            width: 100%;
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid var(--grey-300);
+        }
+        .highlight h3 {
+            font-family: var(--serif);
+            font-size: 1.2rem;
+            color: var(--gold-dark);
+            margin-bottom: 6px;
+        }
+        .highlight p { font-size: 0.9rem; color: var(--grey-600); }
+
+        /* =====================================================
+           EVENTS – continuous horizontal rows
+           ===================================================== */
+        .events { background: var(--white); overflow: hidden; }
+        .events-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .scroll-row {
+            overflow: hidden;
+            width: 100%;
+        }
+        .scroll-track {
+            display: flex;
+            gap: 20px;
+            width: max-content;
+            will-change: transform;
+        }
+        .scroll-track .event-card,
+        .scroll-track .service-card {
+            flex: 0 0 280px;
+            width: 280px;
+        }
+
+        /* Services: odd row left→right, even row right→left.
+           Events: one row, four copies, shift of one quarter so it
+           starts full (no empty gap on the right). */
+        .scroll-track { --shift: -50%; }
+        .events-grid .scroll-track { --shift: -25%; }
+
+        .scroll-row:nth-child(odd) .scroll-track {
+            transform: translateX(var(--shift));
+            animation: scroll-ltr 50s linear infinite;
+        }
+        .scroll-row:nth-child(even) .scroll-track {
+            transform: translateX(0);
+            animation: scroll-rtl 50s linear infinite;
+        }
+
+        @keyframes scroll-ltr {
+            0%   { transform: translateX(var(--shift)); }
+            100% { transform: translateX(0); }
+        }
+        @keyframes scroll-rtl {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(var(--shift)); }
+        }
+
+        /* Pause on hover for usability */
+        .scroll-row:hover .scroll-track {
+            animation-play-state: paused;
+        }
+
+        .event-card {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4 / 5;
+            background: var(--grey-100);
+        }
+        .event-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: linear-gradient(135deg, var(--grey-100), var(--grey-300));
+            transition: transform 0.6s ease;
+        }
+        .event-card::after {            /* gold inner border on hover */
+            content: "";
+            position: absolute;
+            inset: 12px;
+            border: 1px solid var(--gold-light);
+            opacity: 0;
+            transition: 0.4s;
+            pointer-events: none;
+        }
+        .event-caption {
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            padding: 60px 22px 22px;
+            background: linear-gradient(to top, rgba(30, 30, 28, 0.85), transparent);
+            color: var(--white);
+            transform: translateY(20px);
+            opacity: 0.0;
+            transition: 0.4s;
+        }
+        .event-caption span {
+            display: block;
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+        }
+        .event-caption h3 { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; }
+
+        .event-card:hover img { transform: scale(1.08); }
+        .event-card:hover::after { opacity: 1; }
+        .event-card:hover .event-caption,
+        .event-card:focus-within .event-caption { opacity: 1; transform: translateY(0); }
+
+        /* =====================================================
+           SERVICES – continuous horizontal rows
+           ===================================================== */
+        .services { background: var(--grey-50); overflow: hidden; }
+        .services-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--white);
+            border: 1px solid var(--grey-100);
+            display: flex;
+            flex-direction: column;
+            transition: 0.35s;
+        }
+        .service-card img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            background: linear-gradient(135deg, var(--grey-100), var(--grey-300));
+        }
+        .service-body { padding: 22px 22px 26px; border-top: 3px solid var(--gold); }
+        .service-body .num {
+            font-family: var(--serif);
+            font-size: 0.9rem;
+            color: var(--gold-dark);
+            letter-spacing: 0.15em;
+        }
+        .service-body h3 {
+            font-family: var(--serif);
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin: 4px 0 8px;
+            color: var(--grey-800);
+        }
+        .service-body p { font-size: 0.88rem; color: var(--grey-600); line-height: 1.6; }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--gold-light);
+            box-shadow: 0 14px 30px rgba(43, 43, 41, 0.12);
+        }
+
+        /* =====================================================
+           CONTACT / FOOTER
+           ===================================================== */
+        .contact-band {
+            text-align: center;
+            padding: 90px 8%;
+            background: var(--white);
+            border-top: 1px solid var(--grey-100);
+        }
+        .contact-band h2 {
+            font-family: var(--serif);
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            margin-bottom: 14px;
+        }
+        .contact-band p { color: var(--grey-600); max-width: 520px; margin: 0 auto 30px; }
+
+        footer {
+            background: var(--grey-800);
+            color: var(--grey-300);
+            padding: 50px 8% 30px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto 30px;
+        }
+        footer h4 {
+            font-family: var(--serif);
+            color: var(--gold-light);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        footer p, footer a { font-size: 0.9rem; color: var(--grey-300); text-decoration: none; }
+        footer a:hover { color: var(--gold-light); }
+        /* social circles */
+        .socials { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
+        .socials a {
+            width: 44px; height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--gold-light);
+            border-radius: 50%;
+            color: var(--gold-light);
+            transition: 0.3s;
+        }
+        .socials svg {
+            width: 20px; height: 20px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .socials a:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+        .socials a:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 0.8rem;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+        @media (max-width: 1100px) {
+            .scroll-track .event-card,
+            .scroll-track .service-card {
+                flex: 0 0 240px;
+                width: 240px;
+            }
+        }
+        @media (max-width: 800px) {
+            section { padding: 80px 6%; }
+            header { padding: 6px 5%; }
+            nav { gap: 18px; }
+            nav a { font-size: 0.7rem; letter-spacing: 0.14em; }
+            nav .nav-cta { display: none; }
+            /* on touch screens there is no hover, so show captions always */
+            .event-caption { opacity: 1; transform: none; }
+            .scroll-track .event-card,
+            .scroll-track .service-card {
+                flex: 0 0 220px;
+                width: 220px;
+            }
+            .scroll-row:nth-child(odd) .scroll-track,
+            .scroll-row:nth-child(even) .scroll-track {
+                animation-duration: 32s;
+            }
+        }
+        @media (max-width: 520px) {
+            .logo img { height: 48px; }
+            .home .hero-logo { height: 130px; }
+            nav { gap: 12px; }
+            nav a { font-size: 0.66rem; letter-spacing: 0.1em; }
+            .home::before { inset: 80px 3% 24px; }
+            .scroll-track .event-card,
+            .scroll-track .service-card {
+                flex: 0 0 200px;
+                width: 200px;
+            }
+            .scroll-row:nth-child(odd) .scroll-track,
+            .scroll-row:nth-child(even) .scroll-track {
+                animation-duration: 28s;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            * { transition: none !important; }
+            .scroll-track {
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- =====================================================
+         HEADER (the 3 "pages": Home, Events, Services)
+         ===================================================== -->
+    <header>
+        <a href="#home" class="logo" aria-label="Royal Arts Events, accueil">
+            <img src="logo.png" alt="Logo Royal Arts Events">
+        </a>
+        <nav>
+            <a href="#home">Accueil</a>
+            <a href="#events">Événements</a>
+            <a href="#services">Services</a>
+            <a href="#contact" class="nav-cta">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+
+    <!-- =====================================================
+         PAGE 1: HOME
+         ===================================================== -->
+    <section class="home" id="home">
+        <img class="hero-logo" src="logo.png" alt="Logo Royal Arts Events">
+        <span class="eyebrow">Agence de marketing &amp; d'événements</span>
+        <h1>Royal Arts <em>Events</em></h1>
+        <p class="tagline">
+            Nous concevons et réalisons des événements élégants et des campagnes
+            marketing percutantes qui rendent votre marque inoubliable.
+        </p>
+        <div class="actions">
+            <a href="#events" class="btn">Voir nos événements</a>
+            <a href="#services" class="btn outline">Nos services</a>
+        </div>
+
+        <div class="highlights">
+            <div class="highlight">
+                <h3>Créatif</h3>
+                <p>Des concepts originaux, construits autour de votre histoire et de votre public.</p>
+            </div>
+            <div class="highlight">
+                <h3>Soigné</h3>
+                <p>Chaque détail est pensé avec attention, de la première idée jusqu'au dernier invité.</p>
+            </div>
+            <div class="highlight">
+                <h3>Mémorable</h3>
+                <p>Des expériences et des campagnes dont on parle longtemps après leur fin.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         PAGE 2: EVENTS (8 pictures: event1.png to event8.png)
+         Replace the captions with your real event names.
+         ===================================================== -->
+    <section class="events" id="events">
+        <div class="section-head">
+            <span class="eyebrow">Notre portfolio</span>
+            <h2>Les événements</h2>
+            <div class="divider"><span></span></div>
+            <p>Une sélection des célébrations, lancements et rassemblements dont nous sommes fiers.</p>
+        </div>
+
+        <div class="events-grid">
+            <!-- Single row: all 8 events, repeated so the row stays full -->
+            <div class="scroll-row">
+                <div class="scroll-track">
+                    <article class="event-card" tabindex="0">
+                        <img src="event1.png" alt="Photo de l'événement 1" loading="lazy">
+                        <div class="event-caption"><span>Mariage</span><h3>événement 1</h3></div>
+                    </article>
+                    <article class="event-card" tabindex="0">
+                        <img src="event2.png" alt="Photo de l'événement 2" loading="lazy">
+                        <div class="event-caption"><span>Entreprise</span><h3>événement 2</h3></div>
+                    </article>
+                    <article class="event-card" tabindex="0">
+                        <img src="event3.png" alt="Photo de l'événement 3" loading="lazy">
+                        <div class="event-caption"><span>Lancement</span><h3>événement 3</h3></div>
+                    </article>
+                    <article class="event-card" tabindex="0">
+                        <img src="event4.png" alt="Photo de l'événement 4" loading="lazy">
+                        <div class="event-caption"><span>Gala</span><h3>événement 4</h3></div>
+                    </article>
+                    <article class="event-card" tabindex="0">
+                        <img src="event5.png" alt="Photo de l'événement 5" loading="lazy">
+                        <div class="event-caption"><span>Conférence</span><h3>événement 5</h3></div>
+                    </article>
+                    <article class="event-card" tabindex="0">
+                        <img src="event6.png" alt="Photo de l'événement 6" loading="lazy">
+                        <div class="event-caption"><span>Mode</span><h3>événement 6</h3></div>
+                    </article>
+                    <article class="event-card" tabindex="0">
+                        <img src="event7.png" alt="Photo de l'événement 7" loading="lazy">
+                        <div class="event-caption"><span>Célébration</span><h3>événement 7</h3></div>
+                    </article>
+                    <article class="event-card" tabindex="0">
+                        <img src="event8.png" alt="Photo de l'événement 8" loading="lazy">
+                        <div class="event-caption"><span>Festival</span><h3>événement 8</h3></div>
+                    </article>
+                    <article class="event-card" aria-hidden="true">
+                        <img src="event1.png" alt="" loading="lazy">
+                        <div class="event-caption"><span>Mariage</span><h3>événement 1</h3></div>
+                    </article>
+                    <article class="event-card" aria-hidden="true">
+                        <img src="event2.png" alt="" loading="lazy">
+                        <div class="event-caption"><span>Entreprise</span><h3>événement 2</h3></div>
+                    </article>
+                    <article class="event-card" aria-hidden="true">
+                        <img src="event3.png" alt="" loading="lazy">
+                        <div class="event-caption"><span>Lancement</span><h3>événement 3</h3></div>
+                    </article>
+                    <article class="event-card" aria-hidden="true">
+                        <img src="event4.png" alt="" loading="lazy">
+                        <div class="event-caption"><span>Gala</span><h3>événement 4</h3></div>
+                    </article>
+                    <article class="event-card" aria-hidden="true">
+                        <img src="event5.png" alt="" loading="lazy">
+                        <div class="event-caption"><span>Conférence</span><h3>événement 5</h3></div>
+                    </article>
+                    <article class="event-card" aria-hidden="true">
+                        <img src="event6.png" alt="" loading="lazy">
+                        <div class="event-caption"><span>Mode</span><h3>événement 6</h3></div>
+                    </article>
+                    <article class="event-card" aria-hidden="true">
+                        <img src="event7.png" alt="" loading="lazy">
+                        <div class="event-caption"><span>Célébration</span><h3>événement 7</h3></div>
+                    </article>
+                    <article class="event-card" aria-hidden="true">
+                        <img src="event8.png" alt="" loading="lazy">
+                        <div class="event-caption"><span>Festival</span><h3>événement 8</h3></div>
+                    </article>
+                    <article class="event-card" aria-hidden="true">
+                        <img src="event1.png" alt="" loading="lazy">
+                        <div class="event-caption"><span>Mariage</span><h3>événement 1</h3></div>
+                    </article>
+                    <article class="event-card" aria-hidden="true">
+                        <img src="event2.png" alt="" loading="lazy">
+                        <div class="event-caption"><span>Entreprise</span><h3>événement 2</h3></div>
+                    </article>
+                    <article class="event-card" aria-hidden="true">
+                        <img src="event3.png" alt="" loading="lazy">
+                        <div class="event-caption"><span>Lancement</span><h3>événement 3</h3></div>
+                    </article>
+                    <article class="event-card" aria-hidden="true">
+                        <img src="event4.png" alt="" loading="lazy">
+                        <div class="event-caption"><span>Gala</span><h3>événement 4</h3></div>
+                    </article>
+                    <article class="event-card" aria-hidden="true">
+                        <img src="event5.png" alt="" loading="lazy">
+                        <div class="event-caption"><span>Conférence</span><h3>événement 5</h3></div>
+                    </article>
+                    <article class="event-card" aria-hidden="true">
+                        <img src="event6.png" alt="" loading="lazy">
+                        <div class="event-caption"><span>Mode</span><h3>événement 6</h3></div>
+                    </article>
+                    <article class="event-card" aria-hidden="true">
+                        <img src="event7.png" alt="" loading="lazy">
+                        <div class="event-caption"><span>Célébration</span><h3>événement 7</h3></div>
+                    </article>
+                    <article class="event-card" aria-hidden="true">
+                        <img src="event8.png" alt="" loading="lazy">
+                        <div class="event-caption"><span>Festival</span><h3>événement 8</h3></div>
+                    </article>
+                    <article class="event-card" aria-hidden="true">
+                        <img src="event1.png" alt="" loading="lazy">
+                        <div class="event-caption"><span>Mariage</span><h3>événement 1</h3></div>
+                    </article>
+                    <article class="event-card" aria-hidden="true">
+                        <img src="event2.png" alt="" loading="lazy">
+                        <div class="event-caption"><span>Entreprise</span><h3>événement 2</h3></div>
+                    </article>
+                    <article class="event-card" aria-hidden="true">
+                        <img src="event3.png" alt="" loading="lazy">
+                        <div class="event-caption"><span>Lancement</span><h3>événement 3</h3></div>
+                    </article>
+                    <article class="event-card" aria-hidden="true">
+                        <img src="event4.png" alt="" loading="lazy">
+                        <div class="event-caption"><span>Gala</span><h3>événement 4</h3></div>
+                    </article>
+                    <article class="event-card" aria-hidden="true">
+                        <img src="event5.png" alt="" loading="lazy">
+                        <div class="event-caption"><span>Conférence</span><h3>événement 5</h3></div>
+                    </article>
+                    <article class="event-card" aria-hidden="true">
+                        <img src="event6.png" alt="" loading="lazy">
+                        <div class="event-caption"><span>Mode</span><h3>événement 6</h3></div>
+                    </article>
+                    <article class="event-card" aria-hidden="true">
+                        <img src="event7.png" alt="" loading="lazy">
+                        <div class="event-caption"><span>Célébration</span><h3>événement 7</h3></div>
+                    </article>
+                    <article class="event-card" aria-hidden="true">
+                        <img src="event8.png" alt="" loading="lazy">
+                        <div class="event-caption"><span>Festival</span><h3>événement 8</h3></div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         PAGE 3: SERVICES (16 pictures: service1.png to service16.png)
+         Replace the titles and descriptions with your real services.
+         ===================================================== -->
+    <section class="services" id="services">
+        <div class="section-head">
+            <span class="eyebrow">Ce que nous offrons</span>
+            <h2>Nos services</h2>
+            <div class="divider"><span></span></div>
+            <p>De la première idée aux derniers applaudissements, tout ce dont votre événement et votre marque ont besoin.</p>
+        </div>
+
+        <div class="services-grid">
+
+            <!-- Row 1 – sequence reversed for opposite flow (services 1–8) -->
+            <div class="scroll-row">
+                <div class="scroll-track">
+                    <article class="service-card">
+                        <img src="service8.png" alt="Scène et éclairage" loading="lazy">
+                        <div class="service-body"><span class="num">08</span>
+                            <h3>plaques signalétique UV</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card">
+                        <img src="service7.png" alt="Expositions et stands" loading="lazy">
+                        <div class="service-body"><span class="num">07</span>
+                            <h3>Cartes Visites</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card">
+                        <img src="service6.png" alt="Conférences et séminaires" loading="lazy">
+                        <div class="service-body"><span class="num">06</span>
+                            <h3>plaque signalétique</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card">
+                        <img src="service5.png" alt="Lancements de produits" loading="lazy">
+                        <div class="service-body"><span class="num">05</span>
+                            <h3>panneaux néon</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card">
+                        <img src="service4.png" alt="Activations de marque" loading="lazy">
+                        <div class="service-body"><span class="num">04</span>
+                            <h3>flag oriflame</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card">
+                        <img src="service3.png" alt="Événements d'entreprise" loading="lazy">
+                        <div class="service-body"><span class="num">03</span>
+                            <h3>Impression grand format</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card">
+                        <img src="service2.png" alt="Mariages et célébrations" loading="lazy">
+                        <div class="service-body"><span class="num">02</span>
+                            <h3>flocage</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card">
+                        <img src="service1.png" alt="Organisation d'événements" loading="lazy">
+                        <div class="service-body"><span class="num">01</span>
+                            <h3>seriegraphie</h3>
+                            <p></p></div>
+                    </article>
+                    <!-- duplicates for seamless loop -->
+                    <article class="service-card" aria-hidden="true">
+                        <img src="service8.png" alt="" loading="lazy">
+                        <div class="service-body"><span class="num">08</span>
+                            <h3>plaques signalétique UV</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card" aria-hidden="true">
+                        <img src="service7.png" alt="" loading="lazy">
+                        <div class="service-body"><span class="num">07</span>
+                            <h3>Cartes Visites</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card" aria-hidden="true">
+                        <img src="service6.png" alt="" loading="lazy">
+                        <div class="service-body"><span class="num">06</span>
+                            <h3>plaque signalétique</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card" aria-hidden="true">
+                        <img src="service5.png" alt="" loading="lazy">
+                        <div class="service-body"><span class="num">05</span>
+                            <h3>panneaux néon</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card" aria-hidden="true">
+                        <img src="service4.png" alt="" loading="lazy">
+                        <div class="service-body"><span class="num">04</span>
+                            <h3>flag oriflame</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card" aria-hidden="true">
+                        <img src="service3.png" alt="" loading="lazy">
+                        <div class="service-body"><span class="num">03</span>
+                            <h3>Impression grand format</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card" aria-hidden="true">
+                        <img src="service2.png" alt="" loading="lazy">
+                        <div class="service-body"><span class="num">02</span>
+                            <h3>flocage</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card" aria-hidden="true">
+                        <img src="service1.png" alt="" loading="lazy">
+                        <div class="service-body"><span class="num">01</span>
+                            <h3>seriegraphie</h3>
+                            <p></p></div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Row 2 – normal order (services 9–16) -->
+            <div class="scroll-row">
+                <div class="scroll-track">
+                    <article class="service-card">
+                        <img src="service9.png" alt="Son et audiovisuel" loading="lazy">
+                        <div class="service-body"><span class="num">09</span>
+                            <h3>Graphique Designe</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card">
+                        <img src="service10.png" alt="Fleurs et décoration" loading="lazy">
+                        <div class="service-body"><span class="num">10</span>
+                            <h3>haliage</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card">
+                        <img src="service11.png" alt="Photo et vidéo" loading="lazy">
+                        <div class="service-body"><span class="num">11</span>
+                            <h3>sublimation</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card">
+                        <img src="service12.png" alt="Marketing des réseaux sociaux" loading="lazy">
+                        <div class="service-body"><span class="num">12</span>
+                            <h3>logo alico</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card">
+                        <img src="service13.png" alt="Branding et design graphique" loading="lazy">
+                        <div class="service-body"><span class="num">13</span>
+                            <h3>rollup</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card">
+                        <img src="service14.png" alt="Campagnes d'influence" loading="lazy">
+                        <div class="service-body"><span class="num">14</span>
+                            <h3>badge événement</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card">
+                        <img src="service15.png" alt="Impression et signalétique" loading="lazy">
+                        <div class="service-body"><span class="num">15</span>
+                            <h3>porte clé personnalisé</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card">
+                        <img src="service16.png" alt="Réception et traiteur" loading="lazy">
+                        <div class="service-body"><span class="num">16</span>
+                            <h3>pins personnalisé</h3>
+                            <p></p></div>
+                    </article>
+                    <!-- duplicates for seamless loop -->
+                    <article class="service-card" aria-hidden="true">
+                        <img src="service9.png" alt="" loading="lazy">
+                        <div class="service-body"><span class="num">09</span>
+                            <h3>Graphique Designe</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card" aria-hidden="true">
+                        <img src="service10.png" alt="" loading="lazy">
+                        <div class="service-body"><span class="num">10</span>
+                            <h3>haliage</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card" aria-hidden="true">
+                        <img src="service11.png" alt="" loading="lazy">
+                        <div class="service-body"><span class="num">11</span>
+                            <h3>sublimation</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card" aria-hidden="true">
+                        <img src="service12.png" alt="" loading="lazy">
+                        <div class="service-body"><span class="num">12</span>
+                            <h3>logo alico</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card" aria-hidden="true">
+                        <img src="service13.png" alt="" loading="lazy">
+                        <div class="service-body"><span class="num">13</span>
+                            <h3>rollup</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card" aria-hidden="true">
+                        <img src="service14.png" alt="" loading="lazy">
+                        <div class="service-body"><span class="num">14</span>
+                            <h3>badge événement</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card" aria-hidden="true">
+                        <img src="service15.png" alt="" loading="lazy">
+                        <div class="service-body"><span class="num">15</span>
+                            <h3>porte clé personnalisé</h3>
+                            <p></p></div>
+                    </article>
+                    <article class="service-card" aria-hidden="true">
+                        <img src="service16.png" alt="" loading="lazy">
+                        <div class="service-body"><span class="num">16</span>
+                            <h3>pins personnalisé</h3>
+                            <p></p></div>
+                    </article>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    </main>
+
+    <!-- =====================================================
+         CONTACT + FOOTER
+         Replace the placeholder email, phone and address.
+         ===================================================== -->
+    <div class="contact-band" id="contact">
+        <span class="eyebrow">Parlons-en</span>
+        <h2>Vous préparez quelque chose de spécial&nbsp;?</h2>
+        <p>Parlez-nous de votre événement ou de votre campagne et nous reviendrons vers vous avec des idées.</p>
+        <a href="mailto:Royalarts19cpe@gmail.com" class="btn">Envoyez-nous un message</a>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h4>Royal Arts Events</h4>
+                <p>Une agence de marketing et d'événements qui crée des expériences élégantes et mémorables.</p>
+            </div>
+            <div>
+                <h4>Explorer</h4>
+                <p><a href="#home">Accueil</a></p>
+                <p><a href="#events">Événements</a></p>
+                <p><a href="#services">Services</a></p>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <p><a href="mailto:Royalarts19cpe@gmail.com">Royalarts19cpe@gmail.com</a></p>
+                <p>+213 660 650 326</p>
+                <p>setif, algerié</p>
+            </div>
+            <div>
+                <h4>Suivez-nous</h4>
+                <div class="socials">
+                    <a href="https://www.facebook.com/share/1DsSp1Sxuu/" target="_blank" rel="noopener" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/royalarts.cpe?vrfl=MTNwZXNwNGhiOHZxag==" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                    <a href="https://wa.me/213554610017" target="_blank" rel="noopener" aria-label="WhatsApp">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><g transform="translate(7.2 6.6) scale(0.41)"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></g></svg>
+                    </a>
+                    <a href="https://t.me/+213660650326" target="_blank" rel="noopener" aria-label="Telegram">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <p class="footer-bottom">&copy; 2026 Royal Arts Events. Tous droits réservés.</p>
+    </footer>
+
+</body>
+</html>
